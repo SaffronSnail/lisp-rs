@@ -1,5 +1,7 @@
 # Lisp-rs
 
+[![Build Status](https://travis-ci.org/SaffronSnail/lisp-rs.svg?branch=master)](https://travis-ci.org/SaffronSnail/lisp-rs)
+
 Lisp-rs will be a set of libraries to facilitate the implementaiton of Lisps in Rust.
 
 The first milestone is a parser for r7rs. It is being written using the nom library, which facilitates the creation of small, specific parsers that can be composed into more complex parsers.
