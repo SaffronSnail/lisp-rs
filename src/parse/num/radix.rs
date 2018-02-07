@@ -1,23 +1,29 @@
-macro_rules! define_radix {
-    ($name:ident, $tag:expr, $number:expr) => (
-        named! { pub $name<u8>,
+macro_rules! define_radices {
+    ($(($name:ident, $tag:expr, $number:expr, $test_name:ident))* ) => (
+        $(
+            named! { pub $name<u8>,
                      map!(tag!($tag),
                           |_| $number)}
-        )
+        )*
+
+        #[cfg(test)]
+        mod tests {
+            use super::*;
+            use nom::IResult;
+
+            $(
+                #[test]
+                fn $test_name() {
+                    assert_eq!($name($tag.as_bytes()), IResult::Done(&b""[..], $number));
+                }
+            )*
+        }
+    )
 }
 
-define_radix!(radix_2, "#b", 2);
-define_radix!(radix_8, "#o", 8);
-define_radix!(radix_10, "#d", 10);
-define_radix!(radix_16, "#x", 16);
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use nom::IResult;
-
-    #[test]
-    fn radix_2_test() {
-        assert_eq!(radix_2(&b"#b"[..]), IResult::Done(&b""[..], 2));
-    }
-}
+define_radices! (
+    (radix_2, "#b", 2, radix_2_test)
+    (radix_8, "#x", 8, radix_8_test)
+    (radix_10, "#d", 10, radix_10_test)
+    (radix_16, "#x", 16, radix_16_test)
+);
