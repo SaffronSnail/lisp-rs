@@ -1,10 +1,11 @@
 macro_rules! define_radices {
     ($(($name:ident, $tag:expr, $number:expr, $test_name:ident))* ) => (
         $(
-            named! { pub $name<u8>,
+            named! ( pub $name<u8>,
                      map!(tag!($tag),
-                          |_| $number)}
+                          |_| $number));
         )*
+
 
         #[cfg(test)]
         mod tests {
@@ -23,7 +24,17 @@ macro_rules! define_radices {
 
 define_radices! (
     (radix_2, "#b", 2, radix_2_test)
-    (radix_8, "#x", 8, radix_8_test)
+    (radix_8, "#o", 8, radix_8_test)
     (radix_10, "#d", 10, radix_10_test)
     (radix_16, "#x", 16, radix_16_test)
+);
+
+
+named! ( pub scm_radix<u8>,
+         ws!(alt!(
+             radix_2 |
+             radix_8 |
+             radix_10 |
+             radix_16
+         ))
 );
