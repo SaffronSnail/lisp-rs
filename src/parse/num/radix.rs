@@ -18,6 +18,21 @@ macro_rules! define_radices {
                     assert_eq!($name($tag.as_bytes()), IResult::Done(&b""[..], $number));
                 }
             )*
+
+            #[test]
+            fn leading_whitespace() {
+                assert_eq!(scm_radix(&b" \t\t \n #b"[..]), IResult::Done(&b""[..], 2));
+            }
+
+            #[test]
+            fn trailing_whitespace() {
+                assert_eq!(scm_radix(&b"#b \t  \n\n  "[..]), IResult::Done(&b""[..], 2));
+            }
+
+            #[test]
+            fn surrounding_whitespace() {
+                assert_eq!(scm_radix(&b"   \t\t\t\n\n\n#b\n\n\n\t\t\t    "[..]), IResult::Done(&b""[..], 2));
+            }
         }
     )
 }
