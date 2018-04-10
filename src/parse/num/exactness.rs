@@ -1,3 +1,5 @@
+//! # Exactness
+
 #[derive(Debug, PartialEq)]
 pub enum Exactness {
     Exact,

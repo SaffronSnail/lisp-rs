@@ -16,7 +16,7 @@ Terminal subparsers transform literal characters into the values that those char
 ### Compound Subparsers
 Compound subparsers combine terminal subparsers into more sophisticated subparsers. They may not directly analyze the data being parsed; rather, they simply `alt!` (or similar) between other subparsers (terimnal or compound), and deal with issues like whitespace so that terminal parsers can focus on the data that matters. An example of a compound parser is boolean: it `alt_complete!`'s between scm_true and scm_false, and eats the whitepace around them.
 
-## Example in Depth: Boolean Parser
+## Example: Boolean Parser
 To better understand how this sytem of parsing works it is helpful to look at some actual code. But before that, let's look at the BNF description of `boolean` from page 62 of the r7rs:
 
 ```BNF
