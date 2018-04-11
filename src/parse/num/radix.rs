@@ -1,11 +1,11 @@
 //! # Radix
 //! Definition of Radix form r7rs:<br/>
-//! ```
+//! `
 //! <radix 2> -> #b
 //! <radix 8> -> #o
 //! <radix 10> -> <empty> | #d
 //! <radix 16> -> #x
-//! ```
+//! `
 //!
 //! Note that the 'empty' radix is not handled in this parser; it is the
 //! responsibility of higher-level syntax to provide reasonable defaults.
