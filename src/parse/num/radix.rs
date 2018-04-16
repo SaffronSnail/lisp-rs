@@ -10,10 +10,10 @@
 //! Note that the 'empty' radix is not handled in this parser; it is the
 //! responsibility of higher-level syntax to provide reasonable defaults.
 //!
-//! This is a simple parser: radices are predefined literals that determine how
-//! to interpret a sequence of numbers.
-//!
 //! ## Parser: radix
+//! This is a simple parser: radices are predefined literals that maps to
+//! a specific number.
+//!
 //! ```rust
 //! # extern crate lisp;
 //! # extern crate nom;
