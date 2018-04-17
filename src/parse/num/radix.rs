@@ -1,5 +1,4 @@
 //! # Radix
-//! Definition of Radix form r7rs:<br/>
 //! `
 //! <radix 2> -> #b
 //! <radix 8> -> #o
@@ -14,6 +13,7 @@
 //! This is a simple parser: radices are predefined literals that maps to
 //! a specific number.
 //!
+//! ### Examples
 //! ```rust
 //! # extern crate lisp;
 //! # extern crate nom;
