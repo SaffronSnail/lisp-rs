@@ -76,3 +76,30 @@ named! ( pub sign<Sign>,
          ws!(alt!(positive | negative))
        );
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use nom::IResult;
+
+    #[test]
+    fn leading_whitespace() {
+        assert_eq!(sign(&b"               +"[..]),
+                   IResult::Done(&b""[..], Sign::Positive)
+                  );
+    }
+
+    #[test]
+    fn trailing_whitespace() {
+        assert_eq!(sign(&b"+               "[..]),
+                   IResult::Done(&b""[..], Sign::Positive)
+                  );
+    }
+
+    #[test]
+    fn surrounding_whitespace() {
+        assert_eq!(sign(&b"            +           "[..]),
+                   IResult::Done(&b""[..], Sign::Positive)
+                  );
+    }
+}
+
