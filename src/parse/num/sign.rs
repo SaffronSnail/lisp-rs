@@ -56,10 +56,21 @@
 //! # }
 //! ```
 
+use std::fmt;
+
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub enum Sign {
-    Positive,
-    Negative
+    Negative,
+    Positive
+}
+
+impl fmt::Display for Sign {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            Sign::Negative => write!(f, "Negative"),
+            Sign::Positive => write!(f, "Positive"),
+        }
+    }
 }
 
 named! ( pub positive<Sign>,
@@ -102,4 +113,3 @@ mod tests {
                   );
     }
 }
-

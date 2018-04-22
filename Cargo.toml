@@ -4,6 +4,9 @@ version = "0.1.0"
 authors = ["saffronsnail"]
 
 [dependencies]
+# readline replacement
+rustyline = "1.0.0"
+
 # Combinatorial parsing library
 nom = "^3.2"
 
