@@ -2,3 +2,4 @@
 extern crate nom;
 
 pub mod parse;
+pub mod repl;

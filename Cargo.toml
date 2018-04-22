@@ -3,14 +3,6 @@ name = "lisp"
 version = "0.1.0"
 authors = ["saffronsnail"]
 
-[lib]
-name = "lispparse"
-path = "src/lib.rs"
-
-[[bin]]
-name = "r7rs"
-path = "src/repl.rs"
-
 [dependencies]
 # readline replacement
 rustyline = "1.0.0"
