@@ -58,17 +58,26 @@
 
 use std::fmt;
 
-#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+#[derive(Clone,Copy,PartialEq,Eq)]
 pub enum Sign {
     Negative,
     Positive
 }
 
-impl fmt::Display for Sign {
+impl fmt::Debug for Sign {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
             Sign::Negative => write!(f, "Negative"),
             Sign::Positive => write!(f, "Positive"),
+        }
+    }
+}
+
+impl fmt::Display for Sign {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            Sign::Negative => write!(f, "-"),
+            Sign::Positive => write!(f, "+"),
         }
     }
 }
